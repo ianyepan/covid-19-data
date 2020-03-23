@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import MyButton from './components/MyButton.js';
 import MyCard from './components/MyCard.js';
 import MyFooter from './components/MyFooter.js';
+import MySearch from './components/MySearch.js';
 
 class App extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class App extends Component {
     this.state = {
       tab: 'World',
       data: {},
+      inputValue: '',
     };
   }
 
@@ -38,17 +40,45 @@ class App extends Component {
       });
   };
 
-  handleCountries = () => {
-    fetch('https://corona.lmao.ninja/countries')
+  handleHK = () => {
+    fetch('https://corona.lmao.ninja/countries/hong%20kong')
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
         this.setState(state => ({
-          tab: 'countries',
+          tab: 'HK',
           data: jsonData,
         }));
       });
+  };
+
+  updateInputValue = event => {
+    this.setState({
+      inputValue: event.target.value,
+    });
+    console.log(this.state.inputValue);
+  };
+
+  handleSubmit = () => {
+    console.log('Submitted!!!!!!');
+    fetch('https://corona.lmao.ninja/countries/' + this.state.inputValue)
+      .then(res => {
+        return res.json();
+      })
+      .then(jsonData => {
+        this.setState(state => ({
+          tab: this.toCap(state.inputValue),
+          data: jsonData,
+        }));
+      })
+      .catch(() => {
+        alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!')
+      })
+  };
+
+  toCap = string => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   componentDidMount() {
@@ -57,6 +87,8 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
+    const todayCases = data.todayCases ? data.todayCases : "N/A"
+    const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : "N/A"
     return (
       <div>
         <nav>
@@ -66,10 +98,13 @@ class App extends Component {
             </p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
-                <MyButton handleFn={this.handleOverview} str={'Overview'} />
+                <MyButton handleFn={this.handleOverview} str={'World Overview'} />
               </li>
               <li>
                 <MyButton handleFn={this.handleTaiwan} str={'Taiwan Latest'} />
+              </li>
+              <li>
+                <MyButton handleFn={this.handleHK} str={'HK Latest'} />
               </li>
               <li>
                 <a
@@ -82,14 +117,17 @@ class App extends Component {
             </ul>
           </div>
         </nav>
+
+        <MySearch updateInputValue={this.updateInputValue} handleSubmit={this.handleSubmit}/>
+
         <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
           <ui class="collection">
             <h6 className="collection-item active red lighten-2 z-depth-5">
-              {'Data of: ' + this.state.tab}
+              {'Latest Stats of: ' + this.state.tab}
             </h6>
-            <li className="collection-item z-depth-3">Total Cases: {data.cases}</li>
-            <li className="collection-item z-depth-3">Total Deaths: {data.deaths}</li>
             <li className="collection-item z-depth-2">Total Recovered: {data.recovered}</li>
+            <li className="collection-item z-depth-3">Cases Today: {todayCases}</li>
+            <li className="collection-item z-depth-3">Cases per million: {casesPerOneMillion}</li>
           </ui>
         </div>
 

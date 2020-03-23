@@ -94,7 +94,6 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
-    const todayCases = data.todayCases ? data.todayCases : 'N/A';
     const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : 'N/A';
     return (
       <div>
@@ -115,8 +114,10 @@ class App extends Component {
               {'Latest Stats of: ' + this.state.tab}
             </h6>
             <li className="collection-item z-depth-3">Total Recovered: {data.recovered}</li>
-            <li className="collection-item z-depth-3">Cases Today: {todayCases}</li>
             <li className="collection-item z-depth-3">Cases per million: {casesPerOneMillion}</li>
+            <li className="collection-item z-depth-3">
+              Case Fatality Rate (CFR): {((data.deaths * 100) / data.cases).toFixed(4)}%
+            </li>
           </ui>
         </div>
 

@@ -57,14 +57,13 @@ class App extends Component {
     this.setState({
       inputValue: event.target.value,
     });
-    console.log(this.state.inputValue);
   };
 
   handleKeyDown = event => {
     if (event.key === 'Enter') {
-      this.handleSubmit()
+      this.handleSubmit();
     }
-  }
+  };
 
   handleSubmit = () => {
     console.log('Submitted!!!!!!');
@@ -79,8 +78,9 @@ class App extends Component {
         }));
       })
       .catch(() => {
-        alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!')
-      })
+        alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!');
+      });
+    document.getElementById('inputField').value = '';
   };
 
   toCap = string => {
@@ -93,8 +93,8 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
-    const todayCases = data.todayCases ? data.todayCases : "N/A"
-    const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : "N/A"
+    const todayCases = data.todayCases ? data.todayCases : 'N/A';
+    const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : 'N/A';
     return (
       <div>
         <nav>
@@ -124,7 +124,11 @@ class App extends Component {
           </div>
         </nav>
 
-        <MySearch updateInputValue={this.updateInputValue} handleKeyDown={this.handleKeyDown} handleSubmit={this.handleSubmit}/>
+        <MySearch
+          updateInputValue={this.updateInputValue}
+          handleKeyDown={this.handleKeyDown}
+          handleSubmit={this.handleSubmit}
+        />
 
         <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
           <ui class="collection">

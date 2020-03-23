@@ -10,6 +10,7 @@ export default class MyCard extends Component {
         <div>
           <div className="card s6 m6" style={{margin: 30, marginTop: 15, marginBottom: 15, padding: 10}}>
             <input
+              id="inputField"
               placeholder="Enter a country / region... (e.g. China, Italy, Spain...)"
               type="text"
               onChange={this.props.updateInputValue}

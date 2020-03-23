@@ -3,6 +3,7 @@ import MyButton from './components/MyButton.js';
 import MyCard from './components/MyCard.js';
 import MyFooter from './components/MyFooter.js';
 import MySearch from './components/MySearch.js';
+import NavBar from './components/NavBar.js';
 
 class App extends Component {
   constructor(props) {
@@ -97,45 +98,23 @@ class App extends Component {
     const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : 'N/A';
     return (
       <div>
-        <nav>
-          <div className="nav-wrapper">
-            <p className="brand-logo" style={{ margin: 0 }}>
-              COVID-19 Live Data: {this.state.tab}
-            </p>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li>
-                <MyButton handleFn={this.handleOverview} str={'World Overview'} />
-              </li>
-              <li>
-                <MyButton handleFn={this.handleTaiwan} str={'Taiwan Latest'} />
-              </li>
-              <li>
-                <MyButton handleFn={this.handleHK} str={'HK Latest'} />
-              </li>
-              <li>
-                <a
-                  href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"
-                  target="_blank"
-                >
-                  WHO Coverage Map
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
+        <NavBar
+          tab={this.state.tab}
+          handleOverview={this.handleOverview}
+          handleTaiwan={this.handleTaiwan}
+          handleHK={this.handleHK}
+        />
         <MySearch
           updateInputValue={this.updateInputValue}
           handleKeyDown={this.handleKeyDown}
           handleSubmit={this.handleSubmit}
         />
-
         <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
           <ui class="collection">
-            <h6 className="collection-item active red lighten-2 z-depth-5">
+            <h6 className="collection-item active red lighten-2 z-depth-3">
               {'Latest Stats of: ' + this.state.tab}
             </h6>
-            <li className="collection-item z-depth-2">Total Recovered: {data.recovered}</li>
+            <li className="collection-item z-depth-3">Total Recovered: {data.recovered}</li>
             <li className="collection-item z-depth-3">Cases Today: {todayCases}</li>
             <li className="collection-item z-depth-3">Cases per million: {casesPerOneMillion}</li>
           </ui>

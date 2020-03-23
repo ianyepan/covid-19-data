@@ -1,3 +1,3 @@
 ## Screenshot of the website
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot2.png)

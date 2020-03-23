@@ -16,7 +16,11 @@ export default class MyFooter extends Component {
               </div>
               <div className="col l4 offset-l2 s12">
                 <h6>
-                  <a href="https://github.com/ianpan870102/covid-19-data" className="white-text">
+                  <a
+                    href="https://github.com/ianpan870102/covid-19-data"
+                    target="_blank"
+                    className="white-text"
+                  >
                     Github Repo (Source Code)
                   </a>
                 </h6>

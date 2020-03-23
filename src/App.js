@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tab: 'world',
+      tab: 'World',
       data: {},
     };
   }
@@ -19,7 +19,7 @@ class App extends Component {
       })
       .then(jsonData => {
         this.setState(state => ({
-          tab: 'world',
+          tab: 'World',
           data: jsonData,
         }));
       });
@@ -32,7 +32,7 @@ class App extends Component {
       })
       .then(jsonData => {
         this.setState(state => ({
-          tab: 'taiwan',
+          tab: 'Taiwan',
           data: jsonData,
         }));
       });
@@ -61,10 +61,16 @@ class App extends Component {
       <div>
         <nav>
           <div className="nav-wrapper">
-            <a href="#" className="brand-logo" style={{ margin: 5 }}>
+            <p className="brand-logo" style={{ margin: 0 }}>
               COVID-19 Cases Live Data Update
-            </a>
+            </p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li>
+                <MyButton handleFn={this.handleOverview} str={'Overview'} />
+              </li>
+              <li>
+                <MyButton handleFn={this.handleTaiwan} str={'Taiwan Latest'} />
+              </li>
               <li>
                 <a
                   href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"
@@ -76,11 +82,11 @@ class App extends Component {
             </ul>
           </div>
         </nav>
-        <MyButton handleFn={this.handleOverview} str={'Overview'} />
-        <MyButton handleFn={this.handleTaiwan} str={'Taiwan Latest'} />
         <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
           <ui class="collection">
-        <h6 className="collection-item active red lighten-2 z-depth-5">{this.state.tab.toUpperCase()}</h6>
+            <h6 className="collection-item active red lighten-2 z-depth-5">
+              {'Data of: ' + this.state.tab}
+            </h6>
             <li className="collection-item z-depth-3">Total Cases: {data.cases}</li>
             <li className="collection-item z-depth-3">Total Deaths: {data.deaths}</li>
             <li className="collection-item z-depth-2">Total Recovered: {data.recovered}</li>

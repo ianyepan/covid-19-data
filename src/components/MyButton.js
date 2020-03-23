@@ -10,7 +10,7 @@ export default class MyButton extends Component {
     return (
       <>
         <button
-          className="btn-large waves-effect waves-light red lighten-3"
+          className="btn white-text waves-effect waves-light red lighten-3"
           style={styles}
           onClick={this.props.handleFn}
         >

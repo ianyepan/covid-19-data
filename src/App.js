@@ -60,6 +60,12 @@ class App extends Component {
     console.log(this.state.inputValue);
   };
 
+  handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      this.handleSubmit()
+    }
+  }
+
   handleSubmit = () => {
     console.log('Submitted!!!!!!');
     fetch('https://corona.lmao.ninja/countries/' + this.state.inputValue)
@@ -94,7 +100,7 @@ class App extends Component {
         <nav>
           <div className="nav-wrapper">
             <p className="brand-logo" style={{ margin: 0 }}>
-              COVID-19 Cases Live Data Update
+              COVID-19 Live Data: {this.state.tab}
             </p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
@@ -118,7 +124,7 @@ class App extends Component {
           </div>
         </nav>
 
-        <MySearch updateInputValue={this.updateInputValue} handleSubmit={this.handleSubmit}/>
+        <MySearch updateInputValue={this.updateInputValue} handleKeyDown={this.handleKeyDown} handleSubmit={this.handleSubmit}/>
 
         <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
           <ui class="collection">

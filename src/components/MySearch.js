@@ -13,6 +13,7 @@ export default class MyCard extends Component {
               placeholder="Enter a country / region... (e.g. China, Italy, Spain...)"
               type="text"
               onChange={this.props.updateInputValue}
+              onKeyDown={this.props.handleKeyDown}
               style={{color: '#777'}}
             />
           <button

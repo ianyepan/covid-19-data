@@ -74,7 +74,7 @@ class App extends Component {
       })
       .then(jsonData => {
         this.setState(state => ({
-          tab: this.toCap(state.inputValue),
+          tab: this.toCap(state.inputValue) || 'N/A',
           data: jsonData,
         }));
       })

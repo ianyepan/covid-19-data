@@ -8,10 +8,10 @@ export default class MyCard extends Component {
   render() {
     return (
       <>
-        <div className="col l2" style={{ width: 620 }}>
+        <div className="col l6">
           <div className="card horizontal">
             <div className="card-image">
-              <img src={this.props.imageLink} style={{ objectFit: 'cover' }} />
+              <img src={this.props.imageLink} alt="virus" style={{ objectFit: 'cover' }} />
             </div>
             <div className="card-stacked">
               <div className="card-action red lighten-2">

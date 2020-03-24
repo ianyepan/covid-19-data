@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 export default class MyButton extends Component {
   constructor(props) {
     super(props);
@@ -14,10 +13,10 @@ export default class MyButton extends Component {
           style={styles}
           onClick={this.props.handleFn}
         >
-        {this.props.str}
+          {this.props.str}
         </button>
       </>
-    )
+    );
   }
 }
 

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import MyButton from './components/MyButton.js';
 import MyCard from './components/MyCard.js';
 import MyFooter from './components/MyFooter.js';
 import MySearch from './components/MySearch.js';
 import NavBar from './components/NavBar.js';
+import MyLeftCollection from './components/MyLeftCollection.js';
+import MyRightCollection from './components/MyRightCollection.js';
+import MyFlag from './components/MyFlag.js';
 
 class App extends Component {
   constructor(props) {
@@ -77,6 +79,7 @@ class App extends Component {
           tab: this.toCap(state.inputValue) || 'N/A',
           data: jsonData,
         }));
+        console.log(this.state.data.flag);
       })
       .catch(() => {
         alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!');
@@ -95,6 +98,11 @@ class App extends Component {
   render() {
     const { data } = this.state;
     const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : 'N/A';
+    const todayCases = data.todayCases || data.todayCases === 0 ? data.todayCases : 'N/A';
+    const todayDeaths = data.todayDeaths || data.todayDeaths === 0 ? data.todayDeaths : 'N/A';
+    const flagURL = data.countryInfo
+      ? data.countryInfo.flag
+      : 'https://thumbs.dreamstime.com/t/red-world-map-danger-concept-vector-illustration-37080268.jpg';
     return (
       <div>
         <NavBar
@@ -103,22 +111,28 @@ class App extends Component {
           handleTaiwan={this.handleTaiwan}
           handleHK={this.handleHK}
         />
-        <MySearch
-          updateInputValue={this.updateInputValue}
-          handleKeyDown={this.handleKeyDown}
-          handleSubmit={this.handleSubmit}
-        />
-        <div className="col l1" style={{ marginLeft: 30, marginRight: 30 }}>
-          <ui class="collection">
-            <h6 className="collection-item active red lighten-2 z-depth-3">
-              {'Latest Stats of: ' + this.state.tab}
-            </h6>
-            <li className="collection-item z-depth-3">Total Recovered: {data.recovered}</li>
-            <li className="collection-item z-depth-3">Cases per million: {casesPerOneMillion}</li>
-            <li className="collection-item z-depth-3">
-              Case Fatality Rate (CFR): {((data.deaths * 100) / data.cases).toFixed(4)}%
-            </li>
-          </ui>
+        <div className="row">
+          <MySearch
+            updateInputValue={this.updateInputValue}
+            handleKeyDown={this.handleKeyDown}
+            handleSubmit={this.handleSubmit}
+          />
+          <MyFlag flagURL={flagURL} />
+        </div>
+
+        <div className="row">
+          <MyLeftCollection
+            tab={this.state.tab}
+            recovered={data.recovered}
+            casesPerOneMillion={casesPerOneMillion}
+            cases={data.cases}
+            deaths={data.deaths}
+          />
+          <MyRightCollection
+            tab={this.state.tab}
+            todayCases={todayCases}
+            todayDeaths={todayDeaths}
+          />
         </div>
 
         <div className="row">

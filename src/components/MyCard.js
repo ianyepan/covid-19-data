@@ -8,7 +8,7 @@ export default class MyCard extends Component {
   render() {
     return (
       <>
-        <div className="col l6">
+        <div className="col l6 m6 s12">
           <div className="card horizontal">
             <div className="card-image">
               <img src={this.props.imageLink} alt="virus" style={{ objectFit: 'cover' }} />

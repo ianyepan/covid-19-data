@@ -7,8 +7,8 @@ export default class MyCard extends Component {
 
   render() {
     return (
-      <div className="col l8">
-        <div className="card s6 m6" style={{ marginTop: 15, padding: 10 }}>
+      <div className="col l6 s6 m6" style={{paddingTop: 10}}>
+        <div className="card" style={{ marginTop: 15, padding: 10 }}>
           <input
             id="inputField"
             placeholder="Enter a country / region... (e.g. China, Italy, Spain...)"

@@ -12,7 +12,7 @@ export default class NavBar extends Component {
         <nav>
           <div className="nav-wrapper">
             <p className="brand-logo" style={{ margin: 0 }}>
-              COVID-19 Live Data: {this.props.tab}
+              COVID-19 Data
             </p>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>

@@ -8,7 +8,7 @@ export default class MyRightCollection extends Component {
   render() {
     return (
       <>
-          <div className="col l6">
+          <div className="col l6 m6 s12">
             <ui className="collection">
               <h6 className="collection-item active red lighten-2 z-depth-3">
                 {'Overview daily stats of: ' + this.props.tab}

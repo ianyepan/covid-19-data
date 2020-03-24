@@ -6,6 +6,7 @@ import NavBar from './components/NavBar.js';
 import MyLeftCollection from './components/MyLeftCollection.js';
 import MyRightCollection from './components/MyRightCollection.js';
 import MyFlag from './components/MyFlag.js';
+import MyIntro from './components/MyIntro.js';
 
 class App extends Component {
   constructor(props) {
@@ -118,6 +119,7 @@ class App extends Component {
             handleSubmit={this.handleSubmit}
           />
           <MyFlag flagURL={flagURL} />
+          <MyIntro />
         </div>
 
         <div className="row">

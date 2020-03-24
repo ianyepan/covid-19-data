@@ -8,13 +8,14 @@ export default class MyLeftCollection extends Component {
   render() {
     return (
       <>
-        <div className="col l3" style={{ marginTop: 10 }}>
-          <div className="card">
-            <div className="card-image z-depth-3">
-              <img src={this.props.flagURL} alt="flag" />
-            </div>
+          <div className="card-image col m2 s2 l3">
+            <img
+              className="z-depth-5"
+              src={this.props.flagURL}
+              alt="flag"
+              style={{ maxHeight: 150, width: 'auto', height: 'auto', marginTop: 10 }}
+            />
           </div>
-        </div>
       </>
     );
   }

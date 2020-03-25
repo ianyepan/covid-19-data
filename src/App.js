@@ -92,8 +92,24 @@ class App extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
+  updateTitle = () => {
+    const {data} = this.state
+    let title = ''
+    if (!data.countryInfo) {
+      title = this.state.tab
+    } else {
+      title = data.country;
+    }
+    return `COVID-19 ${title} Data`
+  }
+
   componentDidMount() {
     this.handleOverview();
+    document.title = this.updateTitle()
+  }
+
+  componentDidUpdate() {
+    document.title = this.updateTitle()
   }
 
   render() {
@@ -104,6 +120,16 @@ class App extends Component {
     const flagURL = data.countryInfo
       ? data.countryInfo.flag
       : 'https://thumbs.dreamstime.com/t/red-world-map-danger-concept-vector-illustration-37080268.jpg';
+
+    let countryISO3 = '';
+    if (!data.countryInfo) {
+      countryISO3 = this.state.tab;
+    } else if (data.countryInfo.iso3 === 'NO DATA') {
+      countryISO3 = data.country;
+    } else {
+      countryISO3 = data.countryInfo.iso3;
+    }
+
     return (
       <div>
         <NavBar
@@ -124,14 +150,14 @@ class App extends Component {
 
         <div className="row">
           <MyLeftCollection
-            tab={this.state.tab}
+            countryName={data.country ? data.country : this.state.tab}
             recovered={data.recovered}
             casesPerOneMillion={casesPerOneMillion}
             cases={data.cases}
             deaths={data.deaths}
           />
           <MyRightCollection
-            tab={this.state.tab}
+            countryName={data.country ? data.country : this.state.tab}
             todayCases={todayCases}
             todayDeaths={todayDeaths}
           />
@@ -139,14 +165,14 @@ class App extends Component {
 
         <div className="row">
           <MyCard
-            str={`Total Cases (${this.state.tab})`}
+            str={`Total Cases (${countryISO3})`}
             value={data.cases}
             imageLink={
               'https://cdn.geekwire.com/wp-content/uploads/2020/03/200304-corona-micro.jpg'
             }
           />
           <MyCard
-            str={`Total Deaths (${this.state.tab})`}
+            str={`Total Deaths (${countryISO3})`}
             value={data.deaths}
             imageLink={
               'https://cryptoiscoming.com/wp-content/uploads/2020/03/corona-4893215_1280.jpg'

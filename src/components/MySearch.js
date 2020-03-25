@@ -12,10 +12,7 @@ const MySearch = props => {
           onKeyDown={props.handleKeyDown}
           style={{ color: '#777' }}
         />
-        <button
-          className="waves-effect waves-light btn red lighten-2"
-          onClick={props.handleSubmit}
-        >
+        <button className="waves-effect waves-light btn red lighten-2" onClick={props.handleSubmit}>
           Retrieve Data!
         </button>
       </div>

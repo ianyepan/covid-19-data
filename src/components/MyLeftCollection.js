@@ -6,7 +6,7 @@ const MyLeftCollection = props => {
       <div className="col l6 m6 s12">
         <ui className="collection">
           <h6 className="collection-item active red lighten-2 z-depth-3">
-            {'Latest (accumulative) stats of: ' + props.tab}
+            {'Latest (accumulative) stats of: ' + props.countryName}
           </h6>
           <li className="collection-item z-depth-3">Total Recovered: {props.recovered}</li>
           <li className="collection-item z-depth-3">

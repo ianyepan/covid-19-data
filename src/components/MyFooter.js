@@ -23,7 +23,7 @@ const MyFooter = props => {
           </div>
         </div>
         <div className="footer-copyright">
-          <div className="container center">Thanks for dropping by!</div>
+          <div className="container center">2020 Copyright Ian Y.E. Pan | Thanks for dropping by!</div>
         </div>
       </footer>
     </>

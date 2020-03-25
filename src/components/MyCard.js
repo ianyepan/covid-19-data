@@ -5,15 +5,15 @@ const MyCard = props => {
     <>
       <div className="col l6 m6 s12">
         <div className="card horizontal">
-          <div className="card-image">
+          <div className="card-image hide-on-med-and-down">
             <img src={props.imageLink} alt="virus" style={{ objectFit: 'cover' }} />
           </div>
           <div className="card-stacked">
             <div className="card-action red lighten-2">
-              <h5 className="white-text">{props.str}</h5>
+              <h6 className="white-text">{props.str}</h6>
             </div>
             <div className="card-content">
-              <h6>{props.value}</h6>
+              <h5>{props.value}</h5>
             </div>
           </div>
         </div>

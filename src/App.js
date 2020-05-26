@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   handleOverview = () => {
-    fetch('https://corona.lmao.ninja/all')
+    fetch('https://corona.lmao.ninja/v2/all')
       .then(res => {
         return res.json();
       })
@@ -32,7 +32,7 @@ class App extends Component {
   };
 
   handleTaiwan = () => {
-    fetch('https://corona.lmao.ninja/countries/taiwan')
+    fetch('https://corona.lmao.ninja/v2/countries/taiwan')
       .then(res => {
         return res.json();
       })
@@ -45,7 +45,7 @@ class App extends Component {
   };
 
   handleHK = () => {
-    fetch('https://corona.lmao.ninja/countries/hong%20kong')
+    fetch('https://corona.lmao.ninja/v2/countries/hong%20kong')
       .then(res => {
         return res.json();
       })
@@ -71,7 +71,7 @@ class App extends Component {
 
   handleSubmit = () => {
     console.log('Submitted!!!!!!');
-    fetch('https://corona.lmao.ninja/countries/' + this.state.inputValue)
+    fetch('https://corona.lmao.ninja/v2/countries/' + this.state.inputValue)
       .then(res => {
         return res.json();
       })

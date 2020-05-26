@@ -21,7 +21,7 @@ const NavBar = props => {
             </li>
             <li>
               <a
-                href="https://experience.arcgis.com/experience/685d0ace521648f8a5beeeee1b9125cd"
+                href="https://covid19.who.int/"
                 target="_blank"
               >
                 WHO Coverage Map

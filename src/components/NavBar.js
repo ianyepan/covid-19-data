@@ -20,10 +20,7 @@ const NavBar = props => {
               <MyButton handleFn={props.handleHK} str={'HK Latest'} />
             </li>
             <li>
-              <a
-                href="https://covid19.who.int/"
-                target="_blank"
-              >
+              <a href="https://covid19.who.int/" target="_blank">
                 WHO Coverage Map
               </a>
             </li>

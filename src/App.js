@@ -93,23 +93,24 @@ class App extends Component {
   };
 
   updateTitle = () => {
-    const {data} = this.state
-    let title = ''
+    const { data } = this.state;
+    let title = '';
     if (!data.countryInfo) {
-      title = this.state.tab
+      title = this.state.tab;
     } else {
       title = data.country;
     }
-    return `COVID-19 ${title} Data`
-  }
+    return `COVID-19 ${title} Data`;
+  };
 
+  // set initial state on page load
   componentDidMount() {
     this.handleOverview();
-    document.title = this.updateTitle()
+    document.title = this.updateTitle();
   }
 
   componentDidUpdate() {
-    document.title = this.updateTitle()
+    document.title = this.updateTitle();
   }
 
   render() {

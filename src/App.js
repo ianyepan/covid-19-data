@@ -11,6 +11,7 @@ import MyIntro from './components/MyIntro.js';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.baseURL = 'https://corona.lmao.ninja';
     this.state = {
       tab: 'World',
       data: {},
@@ -19,12 +20,12 @@ class App extends Component {
   }
 
   handleOverview = () => {
-    fetch('https://corona.lmao.ninja/v2/all')
+    fetch(this.baseURL + '/v2/all')
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
-        this.setState(state => ({
+        this.setState(prevState => ({
           tab: 'World',
           data: jsonData,
         }));
@@ -32,12 +33,12 @@ class App extends Component {
   };
 
   handleTaiwan = () => {
-    fetch('https://corona.lmao.ninja/v2/countries/taiwan')
+    fetch(this.baseURL + '/v2/countries/taiwan')
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
-        this.setState(state => ({
+        this.setState(prevState => ({
           tab: 'Taiwan',
           data: jsonData,
         }));
@@ -45,12 +46,12 @@ class App extends Component {
   };
 
   handleHK = () => {
-    fetch('https://corona.lmao.ninja/v2/countries/hong%20kong')
+    fetch(this.baseURL + '/v2/countries/hong%20kong')
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
-        this.setState(state => ({
+        this.setState(prevState => ({
           tab: 'HK',
           data: jsonData,
         }));

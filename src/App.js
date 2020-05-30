@@ -70,21 +70,20 @@ class App extends Component {
   };
 
   handleSubmit = () => {
-    console.log('Submitted!!!!!!');
-    fetch('https://corona.lmao.ninja/v2/countries/' + this.state.inputValue)
+    fetch(this.baseURL + '/v2/countries/' + this.state.inputValue)
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
-        this.setState(state => ({
-          tab: this.toCap(state.inputValue) || 'N/A',
-          data: jsonData,
-        }));
-        console.log(this.state.data.flag);
+        if (jsonData.message) { // has message <=> invalid country/region
+          alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!');
+        } else { // valid country/region
+          this.setState(prevState => ({
+            tab: this.toCap(prevState.inputValue) || 'N/A',
+            data: jsonData,
+          }));
+        }
       })
-      .catch(() => {
-        alert(this.toCap(this.state.inputValue) + ' is not a valid country/region!');
-      });
     document.getElementById('inputField').value = '';
   };
 

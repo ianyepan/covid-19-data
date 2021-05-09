@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyIntro = props => {
+const MyIntro = () => {
   return (
     <>
       <div className="col l3 hide-on-med-and-down">

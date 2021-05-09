@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MyFooter = props => {
+const MyFooter = () => {
   return (
     <>
       <footer className="page-footer">

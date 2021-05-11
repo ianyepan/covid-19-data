@@ -9,3 +9,9 @@ Worldometers, and Apple reports.
 - API Website: https://disease.sh/
 - API Docs: https://disease.sh/docs/
 - GitHub: https://github.com/disease-sh/api
+
+## Deploying Instructions:
+- `npm i`
+- `npm run build`
+- `firebase deploy` (May need `npm i -g firebase-tools` and `firebase
+  login`) first

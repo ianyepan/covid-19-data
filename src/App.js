@@ -9,13 +9,14 @@ import MyFlag from './components/MyFlag.js';
 import MyIntro from './components/MyIntro.js';
 
 const App = () => {
-  const baseURL = 'https://corona.lmao.ninja';
+  const baseURL = 'https://disease.sh/v3/covid-19';
   const [tab, setTab] = useState('World');
   const [data, setData] = useState({});
   const [inputValue, setInputValue] = useState('');
 
+  // TODO: combine handleOverview, handleTaiwan, and handleHK into one function
   const handleOverview = () => {
-    fetch(baseURL + '/v2/all')
+    fetch(baseURL + '/all')
       .then(res => {
         return res.json();
       })
@@ -26,7 +27,7 @@ const App = () => {
   };
 
   const handleTaiwan = () => {
-    fetch(baseURL + '/v2/countries/taiwan')
+    fetch(baseURL + '/countries/taiwan')
       .then(res => {
         return res.json();
       })
@@ -37,7 +38,7 @@ const App = () => {
   };
 
   const handleHK = () => {
-    fetch(baseURL + '/v2/countries/hong%20kong')
+    fetch(baseURL + '/countries/hong%20kong')
       .then(res => {
         return res.json();
       })
@@ -58,7 +59,7 @@ const App = () => {
   };
 
   const handleSubmit = () => {
-    fetch(baseURL + '/v2/countries/' + inputValue)
+    fetch(baseURL + '/countries/' + inputValue)
       .then(res => {
         return res.json();
       })
@@ -89,11 +90,16 @@ const App = () => {
     return `COVID-19 ${title} Data`;
   };
 
-  useEffect(() => { // componentDidMount()
+  // componentDidMount()
+  useEffect(() => {
+    console.log('componentdidMount');
     handleOverview();
     document.title = updateTitle();
-  }, [])
-  useEffect(() => { // componentDidUpdate()
+  }, []);
+
+  // componentDidUpdate()
+  useEffect(() => {
+    console.log('componentdidUpdate');
     document.title = updateTitle();
   }, [data]);
 

@@ -10,6 +10,7 @@ const MyRightCollection = props => {
           </h6>
           <li className="collection-item z-depth-3">Diagnosed Today: {props.todayCases}</li>
           <li className="collection-item z-depth-3">Deaths Today: {props.todayDeaths}</li>
+          <li className="collection-item z-depth-3">Recovered Today: {props.todayRecovered}</li>
         </ui>
       </div>
     </>

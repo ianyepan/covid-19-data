@@ -91,6 +91,7 @@ const App = () => {
   const casesPerOneMillion = data.casesPerOneMillion ? data.casesPerOneMillion : 'N/A';
   const todayCases = data.todayCases || data.todayCases === 0 ? data.todayCases : 'N/A';
   const todayDeaths = data.todayDeaths || data.todayDeaths === 0 ? data.todayDeaths : 'N/A';
+  const todayRecovered = data.todayRecovered || data.todayRecovered === 0 ? data.todayRecovered : 'N/A';
   const flagURL = data.countryInfo
     ? data.countryInfo.flag
     : 'https://thumbs.dreamstime.com/t/red-world-map-danger-concept-vector-illustration-37080268.jpg';
@@ -134,6 +135,7 @@ const App = () => {
           countryName={data.country ? data.country : tab}
           todayCases={todayCases}
           todayDeaths={todayDeaths}
+          todayRecovered={todayRecovered}
         />
       </div>
 

@@ -14,36 +14,21 @@ const App = () => {
   const [data, setData] = useState({});
   const [inputValue, setInputValue] = useState('');
 
-  // TODO: combine handleOverview, handleTaiwan, and handleHK into one function
-  const handleOverview = () => {
-    fetch(baseURL + '/all')
+  // Combine handleOverview, handleTaiwan, and handleHK into one function
+  // countryName is either 'World', 'Taiwan', or 'HK'
+  const handleButtonSubmit = countryName => {
+    let countryValue = '/all';
+    if (toCap(countryName) === 'Taiwan') {
+      countryValue = '/countries/taiwan';
+    } else if (toCap(countryName) === 'HK') {
+      countryValue = '/countries/hong%20kong';
+    }
+    fetch(baseURL + countryValue)
       .then(res => {
         return res.json();
       })
       .then(jsonData => {
-        setTab('World');
-        setData(jsonData);
-      });
-  };
-
-  const handleTaiwan = () => {
-    fetch(baseURL + '/countries/taiwan')
-      .then(res => {
-        return res.json();
-      })
-      .then(jsonData => {
-        setTab('Taiwan');
-        setData(jsonData);
-      });
-  };
-
-  const handleHK = () => {
-    fetch(baseURL + '/countries/hong%20kong')
-      .then(res => {
-        return res.json();
-      })
-      .then(jsonData => {
-        setTab('HK');
+        setTab(toCap(countryName));
         setData(jsonData);
       });
   };
@@ -93,7 +78,7 @@ const App = () => {
   // componentDidMount()
   useEffect(() => {
     console.log('componentdidMount');
-    handleOverview();
+    handleButtonSubmit('World');
     document.title = updateTitle();
   }, []);
 
@@ -123,9 +108,9 @@ const App = () => {
     <div>
       <NavBar
         tab={tab}
-        handleOverview={handleOverview}
-        handleTaiwan={handleTaiwan}
-        handleHK={handleHK}
+        handleOverview={() => handleButtonSubmit('World')}
+        handleTaiwan={() => handleButtonSubmit('Taiwan')}
+        handleHK={() => handleButtonSubmit('HK')}
       />
       <div className="row">
         <MySearch
